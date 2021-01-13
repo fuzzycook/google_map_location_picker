@@ -282,6 +282,7 @@ class MapPickerState extends State<MapPicker> {
                 color: Colors.transparent,
                 padding: const EdgeInsets.only(left: 50, right: 50, bottom: 25),
                 child: Container(
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(60),
                     color: Color.fromARGB(255, 51, 51, 51),
@@ -303,7 +304,11 @@ class MapPickerState extends State<MapPicker> {
                           _address ??
                               S.of(context)?.unnamedPlace ??
                               'Unnamed place',
-                          style: TextStyle(fontSize: 18),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         );
                       },
                     ),
