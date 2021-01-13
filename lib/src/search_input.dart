@@ -65,14 +65,15 @@ class SearchInputState extends State<SearchInput> {
       decoration: widget.boxDecoration ??
           BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Theme.of(context).brightness == Brightness.dark
-                ? Colors.black54
-                : Colors.white,
+            color: Colors.white,
           ),
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: Row(
         children: <Widget>[
-          Icon(Icons.search),
+          Icon(
+            Icons.search,
+            color: Color.fromARGB(255, 130, 130, 130),
+          ),
           SizedBox(width: 8),
           Expanded(
             child: TextField(
