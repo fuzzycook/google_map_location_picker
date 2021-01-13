@@ -204,7 +204,7 @@ class MapPickerState extends State<MapPicker> {
             onMyLocationPressed: _initCurrentLocation,
           ),
           pin(),
-          locationCard(),
+          customLocationCard(),
         ],
       ),
     );
@@ -266,6 +266,86 @@ class MapPickerState extends State<MapPicker> {
             );
           }),
         ),
+      ),
+    );
+  }
+
+  Widget customLocationCard() {
+    return Align(
+      alignment: widget.resultCardAlignment ?? Alignment.bottomCenter,
+      child: Consumer<LocationProvider>(
+        builder: (context, locationProvider, _) {
+          return Column(
+            children: [
+              Container(
+                color: Colors.transparent,
+                padding: const EdgeInsets.only(left: 50, right: 50, bottom: 25),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(60),
+                    color: Color.fromARGB(255, 51, 51, 51),
+                  ),
+                  child: Center(
+                    child: FutureLoadingBuilder<Map<String, String>>(
+                      future: getAddress(locationProvider.lastIdleLocation),
+                      mutable: true,
+                      loadingIndicator: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          CircularProgressIndicator(),
+                        ],
+                      ),
+                      builder: (context, data) {
+                        _address = data["address"];
+                        _placeId = data["placeId"];
+                        return Text(
+                          _address ??
+                              S.of(context)?.unnamedPlace ??
+                              'Unnamed place',
+                          style: TextStyle(fontSize: 18),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                padding: const EdgeInsets.all(25),
+                child: SizedBox(
+                  height: 60,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop({
+                        'location': LocationResult(
+                          latLng: locationProvider.lastIdleLocation,
+                          address: _address,
+                          placeId: _placeId,
+                        )
+                      });
+                    },
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        'Confirm Location',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    color: Color.fromARGB(255, 255, 121, 0),
+                    textColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
