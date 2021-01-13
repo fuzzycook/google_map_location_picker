@@ -272,10 +272,11 @@ class MapPickerState extends State<MapPicker> {
 
   Widget customLocationCard() {
     return Align(
-      alignment: widget.resultCardAlignment ?? Alignment.bottomCenter,
+      alignment: Alignment.bottomCenter,
       child: Consumer<LocationProvider>(
         builder: (context, locationProvider, _) {
           return Column(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
                 color: Colors.transparent,
