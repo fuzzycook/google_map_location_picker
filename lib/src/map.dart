@@ -11,6 +11,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:geolocator/geolocator.dart';
 import 'package:google_map_location_picker/generated/l10n.dart';
 import 'package:google_map_location_picker/src/providers/location_provider.dart';
+import 'package:google_map_location_picker/src/style/color_style.dart';
 import 'package:google_map_location_picker/src/utils/loading_builder.dart';
 import 'package:google_map_location_picker/src/utils/log.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -167,9 +168,9 @@ class MapPickerState extends State<MapPicker> {
         children: <Widget>[
           GoogleMap(
             gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
-                      Factory<OneSequenceGestureRecognizer>(
-                          () => EagerGestureRecognizer())
-                    ].toSet(),
+              Factory<OneSequenceGestureRecognizer>(
+                  () => EagerGestureRecognizer())
+            ].toSet(),
             myLocationButtonEnabled: false,
             initialCameraPosition: CameraPosition(
               target: widget.initialCenter,
@@ -389,18 +390,18 @@ class MapPickerState extends State<MapPicker> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.place, size: 56),
+            Icon(Icons.place, size: 40),
             Container(
               decoration: ShapeDecoration(
                 shadows: [
                   BoxShadow(
-                    blurRadius: 4,
-                    color: Colors.black38,
+                    blurRadius: 2,
+                    color: gray2,
                   ),
                 ],
                 shape: CircleBorder(
                   side: BorderSide(
-                    width: 4,
+                    width: 2,
                     color: Colors.transparent,
                   ),
                 ),
