@@ -9,6 +9,7 @@ import 'package:google_map_location_picker/src/map.dart';
 import 'package:google_map_location_picker/src/providers/location_provider.dart';
 import 'package:google_map_location_picker/src/rich_suggestion.dart';
 import 'package:google_map_location_picker/src/search_input.dart';
+import 'package:google_map_location_picker/src/style/color_style.dart';
 import 'package:google_map_location_picker/src/utils/uuid.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -440,9 +441,14 @@ class LocationPickerState extends State<LocationPicker> {
                 child: ElevatedButton(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Icon(Icons.close_rounded, color: Colors.black),
+                    child: Icon(Icons.close_rounded, color: gray6),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
+                  style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    primary: gray3,
+                    elevation: 1,
+                  ),
                 ),
               ),
             ],
