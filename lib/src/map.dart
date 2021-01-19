@@ -166,6 +166,11 @@ class MapPickerState extends State<MapPicker> {
     return Center(
       child: Stack(
         children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: gray6,
+          ),
           GoogleMap(
             gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
               Factory<OneSequenceGestureRecognizer>(
