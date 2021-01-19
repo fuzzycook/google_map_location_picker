@@ -289,10 +289,7 @@ class MapPickerState extends State<MapPicker> {
               Container(
                 color: whitePrimary,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 8,
-                    horizontal: 16,
-                  ),
+                  padding: const EdgeInsets.fromLTRB(25, 25, 25, 8),
                   decoration: BoxDecoration(
                     color: whitePrimary,
                   ),
@@ -303,7 +300,18 @@ class MapPickerState extends State<MapPicker> {
                       loadingIndicator: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          CircularProgressIndicator(),
+                          SizedBox(
+                            height: 50,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 16.0),
+                              child: LinearProgressIndicator(
+                                backgroundColor: gray6,
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(gray1),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       builder: (context, data) {
@@ -317,6 +325,7 @@ class MapPickerState extends State<MapPicker> {
                           style: TextStyle(
                             fontSize: 16,
                             color: gray1,
+                            fontWeight: FontWeight.w500,
                           ),
                         );
                       },
@@ -325,10 +334,10 @@ class MapPickerState extends State<MapPicker> {
                 ),
               ),
               Container(
-                color: Colors.white,
-                padding: const EdgeInsets.all(25),
+                color: whitePrimary,
+                padding: const EdgeInsets.fromLTRB(25, 8, 25, 25),
                 child: SizedBox(
-                  height: 60,
+                  height: 50,
                   child: FlatButton(
                     onPressed: () {
                       Navigator.of(context).pop({
@@ -344,13 +353,13 @@ class MapPickerState extends State<MapPicker> {
                       child: Text(
                         'Confirm Location',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    color: Color.fromARGB(255, 255, 121, 0),
+                    color: orangePrimary,
                     textColor: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
