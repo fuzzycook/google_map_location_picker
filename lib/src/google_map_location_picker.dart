@@ -437,14 +437,17 @@ class LocationPickerState extends State<LocationPicker> {
                 desiredAccuracy: widget.desiredAccuracy,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 4, top: 4),
+                padding: const EdgeInsets.only(
+                  left: 4,
+                  top: 4,
+                ),
                 child: ElevatedButton(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
                       Icons.close_rounded,
                       color: gray1,
-                      size: 18,
+                      size: 28,
                     ),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
