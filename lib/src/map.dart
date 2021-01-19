@@ -288,15 +288,15 @@ class MapPickerState extends State<MapPicker> {
             children: [
               Container(
                 decoration: BoxDecoration(
+                  color: whitePrimary,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
+                      color: gray3,
                       offset: Offset(0.0, 1.0), //(x,y)
                       blurRadius: 6.0,
                     ),
                   ],
                 ),
-                color: whitePrimary,
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(25, 25, 25, 16),
                   decoration: BoxDecoration(
