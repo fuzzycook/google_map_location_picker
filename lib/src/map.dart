@@ -314,9 +314,7 @@ class MapPickerState extends State<MapPicker> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(vertical: 16.0),
-                              child: LinearProgressIndicator(
-                                minHeight: 4,
-                                backgroundColor: gray6,
+                              child: CircularProgressIndicator(
                                 valueColor:
                                     AlwaysStoppedAnimation<Color>(gray1),
                               ),
@@ -413,7 +411,7 @@ class MapPickerState extends State<MapPicker> {
           children: <Widget>[
             Icon(
               Icons.place,
-              size: 54,
+              size: 52,
               color: gray1,
             ),
             Container(
