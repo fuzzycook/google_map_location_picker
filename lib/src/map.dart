@@ -221,13 +221,14 @@ class MapPickerState extends State<MapPicker> {
     return Align(
       alignment: widget.resultCardAlignment ?? Alignment.bottomCenter,
       child: Padding(
-        padding: widget.resultCardPadding ?? EdgeInsets.all(16.0),
+        padding: widget.resultCardPadding ??
+            EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
         child: Card(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           child: Consumer<LocationProvider>(
               builder: (context, locationProvider, _) {
             return Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -249,7 +250,7 @@ class MapPickerState extends State<MapPicker> {
                           _address ??
                               S.of(context)?.unnamedPlace ??
                               'Unnamed place',
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 16),
                         );
                       },
                     ),
@@ -286,13 +287,14 @@ class MapPickerState extends State<MapPicker> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                color: Colors.transparent,
-                padding: const EdgeInsets.only(left: 50, right: 50, bottom: 25),
+                color: whitePrimary,
                 child: Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 16,
+                  ),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(60),
-                    color: Color.fromARGB(255, 51, 51, 51),
+                    color: gray1,
                   ),
                   child: Center(
                     child: FutureLoadingBuilder<Map<String, String>>(
@@ -313,8 +315,8 @@ class MapPickerState extends State<MapPicker> {
                               'Unnamed place',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
+                            fontSize: 16,
+                            color: gray1,
                           ),
                         );
                       },
@@ -390,7 +392,11 @@ class MapPickerState extends State<MapPicker> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.place, size: 50),
+            Icon(
+              Icons.place,
+              size: 50,
+              color: gray1,
+            ),
             Container(
               decoration: ShapeDecoration(
                 shadows: [
