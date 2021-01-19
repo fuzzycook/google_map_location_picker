@@ -294,7 +294,7 @@ class MapPickerState extends State<MapPicker> {
                     horizontal: 16,
                   ),
                   decoration: BoxDecoration(
-                    color: gray1,
+                    color: whitePrimary,
                   ),
                   child: Center(
                     child: FutureLoadingBuilder<Map<String, String>>(
