@@ -390,7 +390,7 @@ class MapPickerState extends State<MapPicker> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.place, size: 40),
+            Icon(Icons.place, size: 50),
             Container(
               decoration: ShapeDecoration(
                 shadows: [
