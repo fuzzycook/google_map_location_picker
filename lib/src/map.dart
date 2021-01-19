@@ -309,8 +309,8 @@ class MapPickerState extends State<MapPicker> {
                       loadingIndicator: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          SizedBox(
-                            height: 50,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: CircularProgressIndicator(
                               valueColor: AlwaysStoppedAnimation<Color>(gray1),
                             ),
