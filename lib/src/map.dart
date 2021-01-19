@@ -287,9 +287,18 @@ class MapPickerState extends State<MapPicker> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(0.0, 1.0), //(x,y)
+                      blurRadius: 6.0,
+                    ),
+                  ],
+                ),
                 color: whitePrimary,
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(25, 25, 25, 8),
+                  padding: const EdgeInsets.fromLTRB(25, 25, 25, 16),
                   decoration: BoxDecoration(
                     color: whitePrimary,
                   ),
@@ -306,6 +315,7 @@ class MapPickerState extends State<MapPicker> {
                               padding:
                                   const EdgeInsets.symmetric(vertical: 16.0),
                               child: LinearProgressIndicator(
+                                minHeight: 4,
                                 backgroundColor: gray6,
                                 valueColor:
                                     AlwaysStoppedAnimation<Color>(gray1),
@@ -337,7 +347,7 @@ class MapPickerState extends State<MapPicker> {
                 color: whitePrimary,
                 padding: const EdgeInsets.fromLTRB(25, 8, 25, 25),
                 child: SizedBox(
-                  height: 50,
+                  height: 60,
                   child: FlatButton(
                     onPressed: () {
                       Navigator.of(context).pop({
