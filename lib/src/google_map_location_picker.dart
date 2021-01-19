@@ -390,47 +390,62 @@ class LocationPickerState extends State<LocationPicker> {
       child: Builder(builder: (context) {
         return Scaffold(
           extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: IconButton(
-                icon: Icon(Icons.close_rounded, color: Colors.black),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
-            elevation: 0,
-            backgroundColor: widget.appBarColor,
-            key: appBarKey,
-            title: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: SearchInput(
-                (input) => searchPlace(input),
-                key: searchInputKey,
-                boxDecoration: widget.searchBarBoxDecoration,
+          // appBar: AppBar(
+          //   leading: Padding(
+          //     padding: const EdgeInsets.only(left: 8),
+          //     child: IconButton(
+          //       icon: Icon(Icons.close_rounded, color: Colors.black),
+          //       onPressed: () => Navigator.of(context).pop(),
+          //     ),
+          //   ),
+          //   elevation: 0,
+          //   backgroundColor: widget.appBarColor,
+          //   key: appBarKey,
+          //   title: Padding(
+          //     padding: const EdgeInsets.symmetric(vertical: 16),
+          //     child: SearchInput(
+          //       (input) => searchPlace(input),
+          //       key: searchInputKey,
+          //       boxDecoration: widget.searchBarBoxDecoration,
+          //       hintText: widget.hintText,
+          //     ),
+          //   ),
+          // ),
+          body: Stack(
+            alignment: Alignment.topLeft,
+            children: [
+              MapPicker(
+                widget.apiKey,
+                initialCenter: widget.initialCenter,
+                initialZoom: widget.initialZoom,
+                requiredGPS: widget.requiredGPS,
+                myLocationButtonEnabled: widget.myLocationButtonEnabled,
+                layersButtonEnabled: widget.layersButtonEnabled,
+                automaticallyAnimateToCurrentLocation:
+                    widget.automaticallyAnimateToCurrentLocation,
+                mapStylePath: widget.mapStylePath,
+                appBarColor: widget.appBarColor,
+                searchBarBoxDecoration: widget.searchBarBoxDecoration,
                 hintText: widget.hintText,
+                resultCardConfirmIcon: widget.resultCardConfirmIcon,
+                resultCardAlignment: widget.resultCardAlignment,
+                resultCardDecoration: widget.resultCardDecoration,
+                resultCardPadding: widget.resultCardPadding,
+                key: mapKey,
+                language: widget.language,
+                desiredAccuracy: widget.desiredAccuracy,
               ),
-            ),
-          ),
-          body: MapPicker(
-            widget.apiKey,
-            initialCenter: widget.initialCenter,
-            initialZoom: widget.initialZoom,
-            requiredGPS: widget.requiredGPS,
-            myLocationButtonEnabled: widget.myLocationButtonEnabled,
-            layersButtonEnabled: widget.layersButtonEnabled,
-            automaticallyAnimateToCurrentLocation:
-                widget.automaticallyAnimateToCurrentLocation,
-            mapStylePath: widget.mapStylePath,
-            appBarColor: widget.appBarColor,
-            searchBarBoxDecoration: widget.searchBarBoxDecoration,
-            hintText: widget.hintText,
-            resultCardConfirmIcon: widget.resultCardConfirmIcon,
-            resultCardAlignment: widget.resultCardAlignment,
-            resultCardDecoration: widget.resultCardDecoration,
-            resultCardPadding: widget.resultCardPadding,
-            key: mapKey,
-            language: widget.language,
-            desiredAccuracy: widget.desiredAccuracy,
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 25),
+                child: ElevatedButton(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.close_rounded, color: Colors.black),
+                  ),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ),
+            ],
           ),
         );
       }),
