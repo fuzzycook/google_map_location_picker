@@ -311,13 +311,8 @@ class MapPickerState extends State<MapPicker> {
                         children: <Widget>[
                           SizedBox(
                             height: 50,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 16.0),
-                              child: CircularProgressIndicator(
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(gray1),
-                              ),
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(gray1),
                             ),
                           ),
                         ],
