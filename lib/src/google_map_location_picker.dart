@@ -391,6 +391,7 @@ class LocationPickerState extends State<LocationPicker> {
       child: Builder(builder: (context) {
         return Scaffold(
           extendBodyBehindAppBar: true,
+          backgroundColor: whitePrimary,
           // appBar: AppBar(
           //   leading: Padding(
           //     padding: const EdgeInsets.only(left: 8),
