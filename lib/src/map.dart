@@ -292,8 +292,8 @@ class MapPickerState extends State<MapPicker> {
                   boxShadow: [
                     BoxShadow(
                       color: gray3,
-                      offset: Offset(0.0, 1.0), //(x,y)
-                      blurRadius: 6.0,
+                      offset: Offset(0.0, 0.5), //(x,y)
+                      blurRadius: 10.0,
                     ),
                   ],
                 ),
