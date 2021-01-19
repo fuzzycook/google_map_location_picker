@@ -292,7 +292,7 @@ class MapPickerState extends State<MapPicker> {
                   boxShadow: [
                     BoxShadow(
                       color: gray5,
-                      offset: Offset(0.0, 1), //(x,y)
+                      offset: Offset(0.0, 2), //(x,y)
                       blurRadius: 10.0,
                     ),
                   ],
@@ -413,7 +413,7 @@ class MapPickerState extends State<MapPicker> {
           children: <Widget>[
             Icon(
               Icons.place,
-              size: 50,
+              size: 54,
               color: gray1,
             ),
             Container(
