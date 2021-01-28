@@ -163,62 +163,60 @@ class MapPickerState extends State<MapPicker> {
   }
 
   Widget buildMap() {
-    return Center(
-      child: Stack(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            color: gray6,
+    return Stack(
+      children: <Widget>[
+        Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: gray6,
+        ),
+        GoogleMap(
+          gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
+            Factory<OneSequenceGestureRecognizer>(
+                () => EagerGestureRecognizer())
+          ].toSet(),
+          myLocationButtonEnabled: false,
+          initialCameraPosition: CameraPosition(
+            target: widget.initialCenter,
+            zoom: widget.initialZoom,
           ),
-          GoogleMap(
-            gestureRecognizers: <Factory<OneSequenceGestureRecognizer>>[
-              Factory<OneSequenceGestureRecognizer>(
-                  () => EagerGestureRecognizer())
-            ].toSet(),
-            myLocationButtonEnabled: false,
-            initialCameraPosition: CameraPosition(
-              target: widget.initialCenter,
-              zoom: widget.initialZoom,
-            ),
-            onMapCreated: (GoogleMapController controller) {
-              mapController.complete(controller);
-              //Implementation of mapStyle
-              if (widget.mapStylePath != null) {
-                controller.setMapStyle(_mapStyle);
-              }
+          onMapCreated: (GoogleMapController controller) {
+            mapController.complete(controller);
+            //Implementation of mapStyle
+            if (widget.mapStylePath != null) {
+              controller.setMapStyle(_mapStyle);
+            }
 
-              _lastMapPosition = widget.initialCenter;
-              LocationProvider.of(context, listen: false)
-                  .setLastIdleLocation(_lastMapPosition);
-            },
-            onCameraMove: (CameraPosition position) {
-              _lastMapPosition = position.target;
-            },
-            onCameraIdle: () async {
-              print("onCameraIdle#_lastMapPosition = $_lastMapPosition");
-              LocationProvider.of(context, listen: false)
-                  .setLastIdleLocation(_lastMapPosition);
-            },
-            onCameraMoveStarted: () {
-              print("onCameraMoveStarted#_lastMapPosition = $_lastMapPosition");
-            },
+            _lastMapPosition = widget.initialCenter;
+            LocationProvider.of(context, listen: false)
+                .setLastIdleLocation(_lastMapPosition);
+          },
+          onCameraMove: (CameraPosition position) {
+            _lastMapPosition = position.target;
+          },
+          onCameraIdle: () async {
+            print("onCameraIdle#_lastMapPosition = $_lastMapPosition");
+            LocationProvider.of(context, listen: false)
+                .setLastIdleLocation(_lastMapPosition);
+          },
+          onCameraMoveStarted: () {
+            print("onCameraMoveStarted#_lastMapPosition = $_lastMapPosition");
+          },
 //            onTap: (latLng) {
 //              clearOverlay();
 //            },
-            mapType: _currentMapType,
-            myLocationEnabled: true,
-          ),
-          _MapFabs(
-            myLocationButtonEnabled: widget.myLocationButtonEnabled,
-            layersButtonEnabled: widget.layersButtonEnabled,
-            onToggleMapTypePressed: _onToggleMapTypePressed,
-            onMyLocationPressed: _initCurrentLocation,
-          ),
-          pin(),
-          customLocationCard(),
-        ],
-      ),
+          mapType: _currentMapType,
+          myLocationEnabled: true,
+        ),
+        _MapFabs(
+          myLocationButtonEnabled: widget.myLocationButtonEnabled,
+          layersButtonEnabled: widget.layersButtonEnabled,
+          onToggleMapTypePressed: _onToggleMapTypePressed,
+          onMyLocationPressed: _initCurrentLocation,
+        ),
+        pin(),
+        customLocationCard(),
+      ],
     );
   }
 
